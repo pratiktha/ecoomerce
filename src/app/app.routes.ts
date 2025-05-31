@@ -19,6 +19,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { TermsofuseComponent } from './pages/termsofuse/termsofuse.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { SearchresultComponent } from './pages/searchresult/searchresult.component';
+import { ProductaddComponent } from './components/admin_pages/productadd/productadd.component';
 
 export const routes: Routes = [
 
@@ -111,5 +112,8 @@ component:MyaccountaddressComponent
 {
   path:'searchresult',
   component:SearchresultComponent
+},{
+  path:'add-product',
+  component:ProductaddComponent
 }
 ];

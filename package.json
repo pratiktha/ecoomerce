@@ -24,6 +24,8 @@
     "@angular/router": "^19.2.0",
     "@angular/ssr": "^19.2.13",
     "@types/jquery": "^3.5.32",
+    "alertifyjs": "^1.14.0",
+    "bootstrap": "^5.3.6",
     "express": "^4.18.2",
     "font-awesome": "^4.7.0",
     "rxjs": "~7.8.0",

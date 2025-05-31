@@ -1,0 +1,120 @@
+<div class="admin-panel">
+    <!-- Main Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h3>Admin Panel</h3>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li [class.active]="activeSection === 'products'">
+            <a (click)="setActiveSection('products')">Products</a>
+          </li>
+          <li [class.active]="activeSection === 'orders'">
+            <a (click)="setActiveSection('orders')">Orders</a>
+          </li>
+          <li [class.active]="activeSection === 'feedback'">
+            <a (click)="setActiveSection('feedback')">Feedback</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  
+    <!-- Content Area -->
+    <div class="content-area">
+      <!-- Products Content -->
+      <div class="section-content" *ngIf="activeSection === 'products'">
+        <h2>Products Management</h2>
+        <div class="product-form-container">
+            <h2>{{ editing ? 'Edit Product' : 'Add New Product' }}</h2>
+            
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+              <!-- Name -->
+              <div class="form-group">
+                <label for="name">Product Name</label>
+                <input type="text" id="name" formControlName="name" class="form-control">
+                <div *ngIf="productForm.get('name')?.invalid && 
+                           (productForm.get('name')?.dirty || productForm.get('name')?.touched)"
+                     class="error-message">
+                  Product name is required
+                </div>
+              </div>
+          
+              <!-- Description -->
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" formControlName="description" 
+                          class="form-control" rows="3"></textarea>
+              </div>
+          
+              <!-- Price -->
+              <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" formControlName="price" 
+                       class="form-control" step="0.01" min="0">
+                <div *ngIf="productForm.get('price')?.invalid && 
+                           (productForm.get('price')?.dirty || productForm.get('price')?.touched)"
+                     class="error-message">
+                  Valid price is required (minimum 0)
+                </div>
+              </div>
+          
+              <!-- Category -->
+              <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" formControlName="category" class="form-control">
+                  <option value="">Select a category</option>
+                  <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+                </select>
+              </div>
+          
+              <!-- Image URL -->
+              <div class="form-group">
+                <label for="image">Image URL</label>
+                <input type="url" id="image" formControlName="image" class="form-control">
+                <div *ngIf="productForm.get('image')?.invalid && 
+                           (productForm.get('image')?.dirty || productForm.get('image')?.touched)"
+                     class="error-message">
+                  Please enter a valid URL
+                </div>
+              </div>
+          
+              <!-- Stock -->
+              <div class="form-group">
+                <label for="stock">Stock Quantity</label>
+                <input type="number" id="stock" formControlName="stock" 
+                       class="form-control" min="0">
+                <div *ngIf="productForm.get('stock')?.invalid && 
+                           (productForm.get('stock')?.dirty || productForm.get('stock')?.touched)"
+                     class="error-message">
+                  Stock must be 0 or greater
+                </div>
+              </div>
+          
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" 
+                        [disabled]="productForm.invalid">
+                  {{ editing ? 'Update' : 'Add' }} Product
+                </button>
+                <!-- <button type="button" class="btn btn-secondary" 
+                        (click)="onCancel()">Cancel</button> -->
+              </div>
+            </form>
+          </div>
+      
+      </div>
+  
+      <!-- Orders Content -->
+      <div class="section-content" *ngIf="activeSection === 'orders'">
+        <h2>Orders Management</h2>
+       
+      </div>
+  
+      <!-- Feedback Content -->
+      <div class="section-content" *ngIf="activeSection === 'feedback'">
+        <h2>Customer Feedback</h2>
+        <div class="feedback-list">
+          
+        </div>
+      </div>
+    </div>
+  </div>
