@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product',
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
@@ -14,6 +15,7 @@ export class ProductComponent implements OnInit {
   isLoading = true;
   error: string | null = null;
   productId: string | null = null;
+  selectedImage: string = '';
 
   selectedColor: string | null = null;
   selectedSize: string | null = null;
@@ -43,7 +45,14 @@ export class ProductComponent implements OnInit {
       this.isLoading = false;
     }
   }
+  selectImage(img: string) {
+    this.selectedImage = img;
+  }
 
+  openZoomModal() {
+    // Implement your zoom modal logic here
+    console.log('Open zoom modal');
+  }
   fetchProductDetails(productId: string): void {
     this.http.get<any>(`http://localhost:3200/productsdetails/${productId}`).subscribe({
       next: (data) => {
@@ -57,7 +66,7 @@ export class ProductComponent implements OnInit {
       }
     });
   }
-  selectColor(variant: any): void {
+   selectColor(variant: any): void {
     this.selectedColor = variant.colorName;
     // Update active state for color variants
     this.product.colorVariants.forEach((v: any) => {
