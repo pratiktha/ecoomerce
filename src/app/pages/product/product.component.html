@@ -1,9 +1,9 @@
-   <!-- Product_Main -->
+
         <section class="flat-spacing">
             <div class="tf-main-product section-image-zoom">
                 <div class="container">
                     <div class="row">
-                        <!-- Product default -->
+                      
                         <div class="col-md-6">
                             <div class="tf-product-media-wrap thumbs-bottom sticky-top">
                                 <div class="thumbs-slider">
@@ -108,234 +108,255 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /Product default -->
-                        <!-- tf-product-info-list -->
+                      
                         <div class="col-md-6">
-                            <div class="tf-product-info-wrap position-relative">
-                                <div class="tf-zoom-main"></div>
-                                <div class="tf-product-info-list other-image-zoom">
-                                    <div class="tf-product-info-heading">
-                                        <div class="tf-product-info-name">
-                                            <div class="text text-btn-uppercase">Clothing</div>
-                                            <h3 class="name">Stretch Strap Top</h3>
-                                            <div class="sub">
-                                                <div class="tf-product-info-rate">
-                                                    <div class="list-star">
-                                                        <i class="icon icon-star"></i>
-                                                        <i class="icon icon-star"></i>
-                                                        <i class="icon icon-star"></i>
-                                                        <i class="icon icon-star"></i>
-                                                        <i class="icon icon-star"></i>
-                                                    </div>
-                                                    <div class="text text-caption-1">(134 reviews)</div>
-                                                </div>
-                                                <div class="tf-product-info-sold">
-                                                    <i class="icon icon-lightning"></i>
-                                                    <div class="text text-caption-1">18 sold in last 32 hours</div>
-                                                </div>
-                                            </div>
+                            <div *ngIf="product && !isLoading" class="tf-product-info-wrap position-relative">
+                              <div class="tf-zoom-main"></div>
+                              <div class="tf-product-info-list other-image-zoom">
+                                <div class="tf-product-info-heading">
+                                  <div class="tf-product-info-name">
+                                    <div class="text text-btn-uppercase">{{ product.category }}</div>
+                                    <h3 class="name">{{ product.name }}</h3>
+                                    <div class="sub">
+                                      <div class="tf-product-info-rate">
+                                        <div class="list-star">
+                                          <i class="icon icon-star"></i>
+                                          <i class="icon icon-star"></i>
+                                          <i class="icon icon-star"></i>
+                                          <i class="icon icon-star"></i>
+                                          <i class="icon icon-star"></i>
                                         </div>
-                                        <div class="tf-product-info-desc">
-                                            <div class="tf-product-info-price">
-                                                <h5 class="price-on-sale font-2">$79.99</h5>
-                                                <div class="compare-at-price font-2">$98.99</div>
-                                                <div class="badges-on-sale text-btn-uppercase">
-                                                    -25%
-                                                </div>
-                                            </div>
-                                            <p>The garments labelled as Committed are products that have been produced using sustainable fibres or processes, reducing their environmental impact.</p>
-                                            <div class="tf-product-info-liveview">
-                                                <i class="icon icon-eye"></i>
-                                                <p class="text-caption-1"><span class="liveview-count">28</span> people are viewing this right now</p>
-                                            </div>
-                                        </div>
+                                        <div class="text text-caption-1">(134 reviews)</div>
+                                      </div>
+                                      <div class="tf-product-info-sold">
+                                        <i class="icon icon-lightning"></i>
+                                        <div class="text text-caption-1">18 sold in last 32 hours</div>
+                                      </div>
                                     </div>
-                                    <div class="tf-product-info-choose-option">
-                                        <div class="variant-picker-item">
-                                            <div class="variant-picker-label mb_12">
-                                                Colors:<span class="text-title variant-picker-label-value value-currentColor">Gray</span>
-                                            </div>
-                                            <div class="variant-picker-values">
-                                                <input id="values-beige" type="radio" name="color1">
-                                                <label class="hover-tooltip tooltip-bot radius-60 color-btn" for="values-beige" data-value="Beige" data-color="beige">
-                                                    <span class="btn-checkbox bg-color-beige1"></span>
-                                                    <span class="tooltip">Beige</span>
-                                                </label>
-                                                <input id="values-gray" type="radio" name="color1" checked>
-                                                <label class="hover-tooltip tooltip-bot radius-60 color-btn" data-price="79.99" for="values-gray" data-value="Gray" data-color="gray">
-                                                    <span class="btn-checkbox bg-color-gray"></span>
-                                                    <span class="tooltip">Gray</span>
-                                                </label>
-                                                <input id="values-grey" type="radio" name="color1">
-                                                <label class="hover-tooltip tooltip-bot radius-60 color-btn" data-price="89.99" for="values-grey" data-value="Grey" data-color="grey">
-                                                    <span class="btn-checkbox bg-color-grey"></span>
-                                                    <span class="tooltip">Grey</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="variant-picker-item">
-                                            <div class="d-flex justify-content-between mb_12">
-                                                <div class="variant-picker-label">
-                                                    Size:<span class="text-title variant-picker-label-value">L</span>
-                                                </div>
-                                                <a routerlink="#size-guide" data-bs-toggle="modal" class="size-guide text-title link">Size Guide</a>
-                                            </div>
-                                            <div class="variant-picker-values gap12">
-                                                <input type="radio" name="size1" id="values-s">
-                                                <label class="style-text size-btn" for="values-s" data-value="S" data-price="79.99">
-                                                    <span class="text-title">S</span>
-                                                </label>
-                                                <input type="radio" name="size1" id="values-m">
-                                                <label class="style-text size-btn" for="values-m" data-value="M" data-price="79.99">
-                                                    <span class="text-title">M</span>
-                                                </label>
-                                                <input type="radio" name="size1" id="values-l" checked>
-                                                <label class="style-text size-btn" for="values-l" data-value="L" data-price="89.99">
-                                                    <span class="text-title">L</span>
-                                                </label>
-                                                <input type="radio" name="size1" id="values-xl">
-                                                <label class="style-text size-btn" for="values-xl" data-value="XL" data-price="89.99">
-                                                    <span class="text-title">XL</span>
-                                                </label>
-                                                <input type="radio" name="size1" id="values-xxl">
-                                                <label class="style-text size-btn type-disable" for="values-xxl" data-value="XXL" data-price="89.99">
-                                                    <span class="text-title">XXL</span>
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div class="tf-product-info-quantity">
-                                            <div class="title mb_12">Quantity:</div>
-                                            <div class="wg-quantity">
-                                                <span class="btn-quantity btn-decrease">-</span>
-                                                <input class="quantity-product" type="text" name="number" value="1">
-                                                <span class="btn-quantity btn-increase">+</span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="tf-product-info-by-btn mb_10">
-                                                <a routerlink="#shoppingCart" data-bs-toggle="modal" class="btn-style-2 flex-grow-1 text-btn-uppercase fw-6 btn-add-to-cart"><span>Add to cart -&nbsp;</span><span class="tf-qty-price total-price">$79.99</span></a>
-                                                <a routerlink="#compare" data-bs-toggle="offcanvas" aria-controls="compare" class="box-icon hover-tooltip compare btn-icon-action">
-                                                    <span class="icon icon-gitDiff"></span>
-                                                    <span class="tooltip text-caption-2">Compare</span>
-                                                </a>
-                                                <a routerlink="javascript:void(0);" class="box-icon hover-tooltip text-caption-2 wishlist btn-icon-action">
-                                                    <span class="icon icon-heart"></span>
-                                                    <span class="tooltip text-caption-2">Wishlist</span>
-                                                </a>
-                                            </div>
-                                            <a routerlink="#" class="btn-style-3 text-btn-uppercase">Buy it now</a>
-                                        </div>
-                                        <div class="tf-product-info-help">
-                                            <div class="tf-product-info-extra-link">
-                                                <a routerlink="#delivery_return" data-bs-toggle="modal" class="tf-product-extra-icon">
-                                                    <div class="icon">
-                                                        <i class="icon-shipping"></i>
-                                                    </div>
-                                                    <p class="text-caption-1">Delivery & Return</p>
-                                                </a>
-                                                <a routerlink="#ask_question" data-bs-toggle="modal" class="tf-product-extra-icon">
-                                                    <div class="icon">
-                                                        <i class="icon-question"></i>
-                                                    </div>
-                                                    <p class="text-caption-1">Ask A Question</p>
-                                                </a>
-                                                <a routerlink="#share_social" data-bs-toggle="modal" class="tf-product-extra-icon">
-                                                    <div class="icon">
-                                                        <i class="icon-share"></i>
-                                                    </div>
-                                                    <p class="text-caption-1">Share</p>
-                                                </a>
-                                            </div>
-                                            <div class="tf-product-info-time">
-                                                <div class="icon">
-                                                    <i class="icon-timer"></i>
-                                                </div>
-                                                <p class="text-caption-1">Estimated Delivery:&nbsp;&nbsp;<span>12-26 days</span> (International), <span>3-6 days</span> (United States)</p>
-                                            </div>
-                                            <div class="tf-product-info-return">
-                                                <div class="icon">
-                                                    <i class="icon-arrowClockwise"></i>
-                                                </div>
-                                                <p class="text-caption-1">Return within <span>45 days</span> of purchase. Duties & taxes are non-refundable.</p>
-                                            </div>
-                                            <div class="dropdown dropdown-store-location">
-                                                <div class="dropdown-title dropdown-backdrop" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                    <div class="tf-product-info-view link">
-                                                        <div class="icon">
-                                                            <i class="icon-map-pin"></i>
-                                                        </div>
-                                                        <span>View Store Information</span>
-                                                    </div>
-                                                </div>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <div class="dropdown-content">
-                                                        <div class="dropdown-content-heading">
-                                                            <h5>Store Location</h5>
-                                                            <i class="icon icon-close"></i>
-                                                        </div>
-                                                        <div class="line-bt"></div>
-                                                        <div>
-                                                            <h6>Fashion Modave</h6>
-                                                            <p>Pickup available. Usually ready in 24 hours</p>
-                                                        </div>
-                                                        <div>
-                                                            <p>766 Rosalinda Forges Suite 044,</p>
-                                                            <p>Gracielahaven, Oregon</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <ul class="tf-product-info-sku">
-                                            <li>
-                                                <p class="text-caption-1">SKU:</p>
-                                                <p class="text-caption-1 text-1">53453412</p>
-                                            </li>
-                                            <li>
-                                                <p class="text-caption-1">Vendor:</p>
-                                                <p class="text-caption-1 text-1">Modave</p>
-                                            </li>
-                                            <li>
-                                                <p class="text-caption-1">Available:</p>
-                                                <p class="text-caption-1 text-1">Instock</p>
-                                            </li>
-                                            <li>
-                                                <p class="text-caption-1">Categories:</p>
-                                                <p class="text-caption-1"><a routerlink="#" class="text-1 link">Clothes</a>, <a routerlink="#" class="text-1 link">women</a>, <a routerlink="#" class="text-1 link">T-shirt</a></p>
-                                            </li>
-                                        </ul>
-                                        <div class="tf-product-info-guranteed">
-                                            <div class="text-title">
-                                                Guranteed safe checkout:
-                                            </div>
-                                            <div class="tf-payment">
-                                                <a routerlink="#">
-                                                    <img src="images/payment/img-1.png" alt="">
-                                                </a>
-                                                <a routerlink="#">
-                                                    <img src="images/payment/img-2.png" alt="">
-                                                </a>
-                                                <a routerlink="#">
-                                                    <img src="images/payment/img-3.png" alt="">
-                                                </a>
-                                                <a routerlink="#">
-                                                    <img src="images/payment/img-4.png" alt="">
-                                                </a>
-                                                <a routerlink="#">
-                                                    <img src="images/payment/img-5.png" alt="">
-                                                </a>
-                                                <a routerlink="#">
-                                                    <img src="images/payment/img-6.png" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
+                                  </div>
+                                  <div class="tf-product-info-desc">
+                                    <div class="tf-product-info-price">
+                                      <h5 class="price-on-sale font-2">${{ product.price | number:'1.2-2' }}</h5>
+                                      <div *ngIf="product.originalPrice" class="compare-at-price font-2">
+                                        ${{ product.originalPrice | number:'1.2-2' }}
+                                      </div>
+                                      <div *ngIf="product.discountPercentage" class="badges-on-sale text-btn-uppercase">
+                                        -{{ product.discountPercentage }}%
+                                      </div>
                                     </div>
-
+                                    <p>{{ product.description }}</p>
+                                    <div class="tf-product-info-liveview">
+                                      <i class="icon icon-eye"></i>
+                                      <p class="text-caption-1"><span class="liveview-count">28</span> people are viewing this right now</p>
+                                    </div>
+                                  </div>
                                 </div>
+                                
+                                <div class="tf-product-info-choose-option">
+                                  <!-- Color Variants -->
+                                  <div class="variant-picker-item" *ngIf="product.colorVariants?.length">
+                                    <div class="variant-picker-label mb_12">
+                                      Colors:<span class="text-title variant-picker-label-value value-currentColor">{{ selectedColor || product.colorVariants[0].colorName }}</span>
+                                    </div>
+                                    <div class="variant-picker-values">
+                                      <input *ngFor="let variant of product.colorVariants" 
+                                             [id]="'values-'+variant.colorName.toLowerCase()" 
+                                             type="radio" 
+                                             name="color1"
+                                             [checked]="variant.isActive"
+                                             (change)="selectColor(variant)">
+                                      <label *ngFor="let variant of product.colorVariants" 
+                                             class="hover-tooltip tooltip-bot radius-60 color-btn" 
+                                             [attr.for]="'values-'+variant.colorName.toLowerCase()" 
+                                             [attr.data-value]="variant.colorName"
+                                             [attr.data-color]="variant.colorName.toLowerCase()">
+                                        <span class="btn-checkbox" [style.background-color]="variant.colorCode"></span>
+                                        <span class="tooltip">{{ variant.colorName }}</span>
+                                      </label>
+                                    </div>
+                                  </div>
+                          
+                                  <!-- Size Variants -->
+                                  <div class="variant-picker-item" *ngIf="product.sizeVariants?.length">
+                                    <div class="d-flex justify-content-between mb_12">
+                                      <div class="variant-picker-label">
+                                        Size:<span class="text-title variant-picker-label-value">{{ selectedSize || product.sizeVariants[0] }}</span>
+                                      </div>
+                                      <a routerLink="#size-guide" data-bs-toggle="modal" class="size-guide text-title link">Size Guide</a>
+                                    </div>
+                                    <div class="variant-picker-values gap12">
+                                      <input *ngFor="let size of product.sizeVariants; let i = index" 
+                                             type="radio" 
+                                             name="size1" 
+                                             [id]="'values-'+size.toLowerCase()"
+                                             [checked]="i === 0"
+                                             (change)="selectSize(size)">
+                                      <label *ngFor="let size of product.sizeVariants" 
+                                             class="style-text size-btn" 
+                                             [attr.for]="'values-'+size.toLowerCase()" 
+                                             [attr.data-value]="size"
+                                             [class.type-disable]="!isSizeAvailable(size)">
+                                        <span class="text-title">{{ size }}</span>
+                                      </label>
+                                    </div>
+                                  </div>
+                          
+                                  <!-- Quantity Selector -->
+                                  <div class="tf-product-info-quantity">
+                                    <div class="title mb_12">Quantity:</div>
+                                    <div class="wg-quantity">
+                                      <span class="btn-quantity btn-decrease" (click)="decreaseQuantity()">-</span>
+                                      <input class="quantity-product" type="text" name="number" [value]="quantity" readonly>
+                                      <span class="btn-quantity btn-increase" (click)="increaseQuantity()">+</span>
+                                    </div>
+                                  </div>
+                          
+                                  <!-- Action Buttons -->
+                                  <div>
+                                    <div class="tf-product-info-by-btn mb_10">
+                                      <a routerLink="#shoppingCart" 
+                                         data-bs-toggle="modal" 
+                                         class="btn-style-2 flex-grow-1 text-btn-uppercase fw-6 btn-add-to-cart"
+                                         (click)="addToCart()">
+                                        <span>Add to cart -&nbsp;</span>
+                                        <span class="tf-qty-price total-price">${{ (product.price * quantity) | number:'1.2-2' }}</span>
+                                      </a>
+                                      <a routerLink="#compare" 
+                                         data-bs-toggle="offcanvas" 
+                                         aria-controls="compare" 
+                                         class="box-icon hover-tooltip compare btn-icon-action">
+                                        <span class="icon icon-gitDiff"></span>
+                                        <span class="tooltip text-caption-2">Compare</span>
+                                      </a>
+                                      <a routerLink="javascript:void(0);" 
+                                         class="box-icon hover-tooltip text-caption-2 wishlist btn-icon-action"
+                                         (click)="addToWishlist()">
+                                        <span class="icon icon-heart"></span>
+                                        <span class="tooltip text-caption-2">Wishlist</span>
+                                      </a>
+                                    </div>
+                                    <a routerLink="#" class="btn-style-3 text-btn-uppercase" (click)="buyNow()">Buy it now</a>
+                                  </div>
+                          
+                                  <!-- Product Help Info -->
+                                  <div class="tf-product-info-help">
+                                    <div class="tf-product-info-extra-link">
+                                      <a routerLink="#delivery_return" data-bs-toggle="modal" class="tf-product-extra-icon">
+                                        <div class="icon">
+                                          <i class="icon-shipping"></i>
+                                        </div>
+                                        <p class="text-caption-1">Delivery & Return</p>
+                                      </a>
+                                      <a routerLink="#ask_question" data-bs-toggle="modal" class="tf-product-extra-icon">
+                                        <div class="icon">
+                                          <i class="icon-question"></i>
+                                        </div>
+                                        <p class="text-caption-1">Ask A Question</p>
+                                      </a>
+                                      <a routerLink="#share_social" data-bs-toggle="modal" class="tf-product-extra-icon">
+                                        <div class="icon">
+                                          <i class="icon-share"></i>
+                                        </div>
+                                        <p class="text-caption-1">Share</p>
+                                      </a>
+                                    </div>
+                                    
+                                    <div class="tf-product-info-time">
+                                      <div class="icon">
+                                        <i class="icon-timer"></i>
+                                      </div>
+                                      <p class="text-caption-1">Estimated Delivery:&nbsp;&nbsp;<span>12-26 days</span> (International), <span>3-6 days</span> (United States)</p>
+                                    </div>
+                                    
+                                    <div class="tf-product-info-return">
+                                      <div class="icon">
+                                        <i class="icon-arrowClockwise"></i>
+                                      </div>
+                                      <p class="text-caption-1">Return within <span>45 days</span> of purchase. Duties & taxes are non-refundable.</p>
+                                    </div>
+                                    
+                                    <div class="dropdown dropdown-store-location">
+                                      <div class="dropdown-title dropdown-backdrop" data-bs-toggle="dropdown" aria-haspopup="true">
+                                        <div class="tf-product-info-view link">
+                                          <div class="icon">
+                                            <i class="icon-map-pin"></i>
+                                          </div>
+                                          <span>View Store Information</span>
+                                        </div>
+                                      </div>
+                                      <div class="dropdown-menu dropdown-menu-end">
+                                        <div class="dropdown-content">
+                                          <div class="dropdown-content-heading">
+                                            <h5>Store Location</h5>
+                                            <i class="icon icon-close"></i>
+                                          </div>
+                                          <div class="line-bt"></div>
+                                          <div>
+                                            <h6>Fashion Modave</h6>
+                                            <p>Pickup available. Usually ready in 24 hours</p>
+                                          </div>
+                                          <div>
+                                            <p>766 Rosalinda Forges Suite 044,</p>
+                                            <p>Gracielahaven, Oregon</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                          
+                                  <!-- Product SKU Info -->
+                                  <ul class="tf-product-info-sku">
+                                    <li>
+                                      <p class="text-caption-1">SKU:</p>
+                                      <p class="text-caption-1 text-1">{{ product._id }}</p>
+                                    </li>
+                                    <li>
+                                      <p class="text-caption-1">Vendor:</p>
+                                      <p class="text-caption-1 text-1">Modave</p>
+                                    </li>
+                                    <li>
+                                      <p class="text-caption-1">Available:</p>
+                                      <p class="text-caption-1 text-1">{{ product.stock > 0 ? 'In stock' : 'Out of stock' }}</p>
+                                    </li>
+                                    <li>
+                                      <p class="text-caption-1">Categories:</p>
+                                      <p class="text-caption-1">
+                                        <a routerLink="#" class="text-1 link">{{ product.category }}</a>
+                                      </p>
+                                    </li>
+                                  </ul>
+                          
+                                  <!-- Payment Methods -->
+                                  <div class="tf-product-info-guranteed">
+                                    <div class="text-title">
+                                      Guranteed safe checkout:
+                                    </div>
+                                    <div class="tf-payment">
+                                      <a routerLink="#">
+                                        <img src="assets/images/payment/img-1.png" alt="">
+                                      </a>
+                                      <a routerLink="#">
+                                        <img src="assets/images/payment/img-2.png" alt="">
+                                      </a>
+                                      <a routerLink="#">
+                                        <img src="assets/images/payment/img-3.png" alt="">
+                                      </a>
+                                      <a routerLink="#">
+                                        <img src="assets/images/payment/img-4.png" alt="">
+                                      </a>
+                                      <a routerLink="#">
+                                        <img src="assets/images/payment/img-5.png" alt="">
+                                      </a>
+                                      <a routerLink="#">
+                                        <img src="assets/images/payment/img-6.png" alt="">
+                                      </a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                        </div>
-                        <!-- /tf-product-info-list -->
+                          </div>
+                  
                     </div>
                 </div>
             </div>
@@ -398,9 +419,9 @@
                 </div>
             </div>
         </section>
-        <!-- /Product_Main -->
+   
 
-        <!-- Product_Description_Tabs -->
+
         <section class="">
             <div class="container">
                 <div class="row">
@@ -420,11 +441,11 @@
                                     <span class="inner">Return Policies</span>
                                 </li>
                             </ul>
-                            <div class="widget-content-tab">
+                            <div class="widget-content-tab"  *ngIf="product && !isLoading" >
                                 <div class="widget-content-inner active">
                                     <div class="tab-description">
                                         <div class="right">
-                                            <div class="letter-1 text-btn-uppercase mb_12">Stretch strap top</div>
+                                            <div class="letter-1 text-btn-uppercase mb_12">{{ product.name }}</div>
                                             <p class="mb_12 text-secondary">Nodding to retro styles, this Hyperbola T-shirt is defined by its off-the-shoulder design. It's spun from a green stretch cotton jersey and adorned with an embroidered AC logo on the front, a brand's signature.</p>
                                             <p class="text-secondary">Thick knitted fabric. Short design. Straight design. Rounded neck. Sleeveless. Straps. Unclosed. Cable knit finish. Co-ord.</p>
                                         </div>
@@ -728,9 +749,7 @@
                 </div>
             </div>
         </section>
-        <!-- /Product_Description_Tabs -->
-
-        <!-- Ralated Products -->
+ 
         <section class="flat-spacing">
             <div class="container flat-animate-tab">
                 <ul class="tab-product justify-content-sm-center wow fadeInUp" data-wow-delay="0s" role="tablist">
@@ -1248,4 +1267,81 @@
 
             </div>
         </section>
-        <!-- /Ralated Products -->
+ 
+  <div class="product-detail-container">
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="loading-overlay">
+      <div class="spinner"></div>
+      <p>Loading product details...</p>
+    </div>
+  
+    <!-- Error State -->
+    <div *ngIf="error && !isLoading" class="error-state">
+      <p>{{ error }}</p>
+      <button (click)="fetchProductDetails(productId!)" class="btn-retry" *ngIf="productId">
+        Retry
+      </button>
+    </div>
+  
+    <!-- Product Detail -->
+    <div *ngIf="product && !isLoading" class="product-detail">
+      <div class="product-images">
+        <img [src]="product.image" [alt]="product.name" class="main-image">
+        <!-- Add more images/gallery here if needed -->
+      </div>
+  
+      <div class="product-info">
+        <h1>{{ product.name }}</h1>
+        
+        <div class="price-section">
+          <span class="current-price">${{ product.price | number:'1.2-2' }}</span>
+          <span *ngIf="product.originalPrice" class="original-price">
+            ${{ product.originalPrice | number:'1.2-2' }}
+          </span>
+          <span *ngIf="product.discountPercentage" class="discount">
+            Save {{ product.discountPercentage }}%
+          </span>
+        </div>
+  
+        <div class="availability" [class.in-stock]="product.inStock" [class.out-of-stock]="!product.inStock">
+          {{ product.inStock ? 'In Stock' : 'Out of Stock' }}
+        </div>
+  
+        <div class="description">
+          <h3>Description</h3>
+          <p>{{ product.description }}</p>
+        </div>
+  
+        <!-- Color Variants -->
+        <div *ngIf="product.colorVariants?.length" class="color-variants">
+          <h3>Colors</h3>
+          <div class="color-options">
+            <div *ngFor="let variant of product.colorVariants" class="color-option">
+              <span class="color-swatch" [style.background-color]="variant.colorCode"></span>
+              <span>{{ variant.colorName }}</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Size Variants -->
+        <div *ngIf="product.sizeVariants?.length" class="size-variants">
+          <h3>Sizes</h3>
+          <div class="size-options">
+            <span *ngFor="let size of product.sizeVariants" class="size-option">
+              {{ size }}
+            </span>
+          </div>
+        </div>
+  
+        <!-- Add to Cart -->
+        <div class="add-to-cart">
+          <button *ngIf="product.inStock" class="btn-add-to-cart">
+            Add to Cart
+          </button>
+          <button *ngIf="!product.inStock" class="btn-add-to-cart" disabled>
+            Notify When Available
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

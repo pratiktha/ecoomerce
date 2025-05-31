@@ -9,12 +9,16 @@
           <li [class.active]="activeSection === 'products'">
             <a (click)="setActiveSection('products')">Products</a>
           </li>
+          <li [class.active]="activeSection === 'ProductList'">
+            <a (click)="setActiveSection('ProductList')">Product List</a>
+          </li>
           <li [class.active]="activeSection === 'orders'">
             <a (click)="setActiveSection('orders')">Orders</a>
           </li>
           <li [class.active]="activeSection === 'feedback'">
             <a (click)="setActiveSection('feedback')">Feedback</a>
           </li>
+         
         </ul>
       </nav>
     </div>
@@ -22,87 +26,82 @@
     <!-- Content Area -->
     <div class="content-area">
       <!-- Products Content -->
-      <div class="section-content" *ngIf="activeSection === 'products'">
-        <h2>Products Management</h2>
-        <div class="product-form-container">
-            <h2>{{ editing ? 'Edit Product' : 'Add New Product' }}</h2>
-            
-            <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-              <!-- Name -->
-              <div class="form-group">
-                <label for="name">Product Name</label>
-                <input type="text" id="name" formControlName="name" class="form-control">
-                <div *ngIf="productForm.get('name')?.invalid && 
-                           (productForm.get('name')?.dirty || productForm.get('name')?.touched)"
-                     class="error-message">
-                  Product name is required
-                </div>
-              </div>
-          
-              <!-- Description -->
-              <div class="form-group">
-                <label for="description">Description</label>
-                <textarea id="description" formControlName="description" 
-                          class="form-control" rows="3"></textarea>
-              </div>
-          
-              <!-- Price -->
-              <div class="form-group">
-                <label for="price">Price</label>
-                <input type="number" id="price" formControlName="price" 
-                       class="form-control" step="0.01" min="0">
-                <div *ngIf="productForm.get('price')?.invalid && 
-                           (productForm.get('price')?.dirty || productForm.get('price')?.touched)"
-                     class="error-message">
-                  Valid price is required (minimum 0)
-                </div>
-              </div>
-          
-              <!-- Category -->
-              <div class="form-group">
-                <label for="category">Category</label>
-                <select id="category" formControlName="category" class="form-control">
-                  <option value="">Select a category</option>
-                  <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
-                </select>
-              </div>
-          
-              <!-- Image URL -->
-              <div class="form-group">
-                <label for="image">Image URL</label>
-                <input type="url" id="image" formControlName="image" class="form-control">
-                <div *ngIf="productForm.get('image')?.invalid && 
-                           (productForm.get('image')?.dirty || productForm.get('image')?.touched)"
-                     class="error-message">
-                  Please enter a valid URL
-                </div>
-              </div>
-          
-              <!-- Stock -->
-              <div class="form-group">
-                <label for="stock">Stock Quantity</label>
-                <input type="number" id="stock" formControlName="stock" 
-                       class="form-control" min="0">
-                <div *ngIf="productForm.get('stock')?.invalid && 
-                           (productForm.get('stock')?.dirty || productForm.get('stock')?.touched)"
-                     class="error-message">
-                  Stock must be 0 or greater
-                </div>
-              </div>
-          
-              <div class="form-actions">
-                <button type="submit" class="btn btn-primary" 
-                        [disabled]="productForm.invalid">
-                  {{ editing ? 'Update' : 'Add' }} Product
-                </button>
-                <!-- <button type="button" class="btn btn-secondary" 
-                        (click)="onCancel()">Cancel</button> -->
-              </div>
-            </form>
-          </div>
+      <div class="section-content p-0" *ngIf="activeSection === 'products'">
+        <div class="container-fluid p-0">
+          <div class="card border-0 shadow-none">
+            <div class="card-header bg-white border-bottom p-4">
+              <h2 class="mb-0 fw-bold">Products Management</h2>
+              <p class="text-muted mb-0">{{ editing ? 'Edit existing product' : 'Create new product' }}</p>
+            </div>
+            <div class="card-body p-4">
+              <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="row g-3">
+                <!-- Left Column -->
+                <div class="col-md-6">
+                  <!-- Product Name -->
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Product Name <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="name" class="form-control form-control-lg">
+                    <div *ngIf="productForm.get('name')?.invalid" class="text-danger small mt-1">Required</div>
+                  </div>
       
+                  <!-- Description -->
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Description</label>
+                    <textarea formControlName="description" class="form-control" rows="3"></textarea>
+                  </div>
+      
+                  <!-- Image URL -->
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Image URL <span class="text-danger">*</span></label>
+                    <input type="url" formControlName="image" class="form-control">
+                    <div *ngIf="productForm.get('image')?.invalid" class="text-danger small mt-1">Valid URL required</div>
+                    <img [src]="productForm.get('image')?.value" class="img-fluid mt-2" style="max-height:150px" onerror="this.style.display='none'">
+                  </div>
+                </div>
+      
+                <!-- Right Column -->
+                <div class="col-md-6">
+                  <!-- Price -->
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Price <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                      <span class="input-group-text">$</span>
+                      <input type="number" formControlName="price" class="form-control">
+                    </div>
+                    <div *ngIf="productForm.get('price')?.invalid" class="text-danger small mt-1">Minimum 0</div>
+                  </div>
+      
+                  <!-- Category -->
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Category <span class="text-danger">*</span></label>
+                    <select formControlName="category" class="form-select">
+                      <option value="" disabled selected>Select category</option>
+                      <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+                    </select>
+                  </div>
+      
+                  <!-- Stock -->
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Stock <span class="text-danger">*</span></label>
+                    <input type="number" formControlName="stock" class="form-control">
+                    <div *ngIf="productForm.get('stock')?.invalid" class="text-danger small mt-1">Minimum 0</div>
+                  </div>
+                </div>
+      
+                <!-- Form Actions -->
+                <div class="col-12">
+                  <div class="d-flex justify-content-end gap-2">
+                    <button type="button" class="btn btn-outline-secondary" (click)="activeSection = 'ProductList'">Cancel</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">
+                      {{ editing ? 'Update' : 'Save' }} Product
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-  
       <!-- Orders Content -->
       <div class="section-content" *ngIf="activeSection === 'orders'">
         <h2>Orders Management</h2>
@@ -116,5 +115,141 @@
           
         </div>
       </div>
+      <div class="section-content" *ngIf="activeSection === 'ProductList'">
+   
+        <div class="container mt-5">
+          <h2 class="mb-4">Products List</h2>
+          
+          <!-- Loading indicator -->
+          <div *ngIf="isLoading" class="text-center">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p>Loading products...</p>
+          </div>
+          
+          <!-- Error message -->
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            {{ errorMessage }}
+          </div>
+          
+          <!-- Products table -->
+          <table *ngIf="!isLoading && !errorMessage" class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Stock</th>
+                <th>Created At</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td>
+                  <img [src]="product.image" 
+                       [alt]="product.name" 
+                       style="width: 80px; height: 80px; object-fit: cover;">
+                </td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>${{ product.price }}</td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.stock }}</td>
+                <td>{{ formatDate(product.createdAt) }}</td>
+                <td>
+                  <button class="btn btn-sm btn-primary me-2" (click)="editProduct(product._id)">
+                    <i class="fas fa-edit"></i> Edit
+                  </button>
+                  <button class="btn btn-sm btn-danger" 
+                  (click)="deleteProduct(product._id)"
+                  [disabled]="isLoading">
+            <i class="fas" [class.fa-trash-alt]="!isLoading" [class.fa-spinner]="isLoading" [class.fa-spin]="isLoading"></i>
+            {{ isLoading ? ' Deleting...' : ' Delete' }}
+          </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <!-- Empty state -->
+          <div *ngIf="!isLoading && !errorMessage && products.length === 0" class="alert alert-info">
+            No products found.
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+  <!-- modal -->
+   <!-- Edit Product Modal -->
+<div class="modal fade" [class.show]="showEditModal" [style.display]="showEditModal ? 'block' : 'none'" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Edit Product</h5>
+        <button type="button" class="btn-close btn-close-white" (click)="showEditModal = false" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Reuse your existing form inside the modal -->
+        <form [formGroup]="productForm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Product Name</label>
+                <input type="text" formControlName="name" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea formControlName="description" class="form-control" rows="3"></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Image URL</label>
+                <input type="url" formControlName="image" class="form-control">
+                <img [src]="productForm.get('image')?.value" class="img-thumbnail mt-2" style="max-height: 100px;">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input type="number" formControlName="price" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Category</label>
+                <select formControlName="category" class="form-select">
+                  <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Stock</label>
+                <input type="number" formControlName="stock" class="form-control">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="showEditModal = false">Cancel</button>
+        <button type="button" class="btn btn-primary" 
+                (click)="updateProduct()" 
+                [disabled]="productForm.invalid || isLoading">
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-1"></span>
+          Update Product
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade" [class.show]="showEditModal" [style.display]="showEditModal ? 'block' : 'none'"></div>

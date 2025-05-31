@@ -95,3 +95,25 @@
       background-color: #fff;
     }
   }
+
+
+  /* Modal animation */
+.modal {
+  transition: opacity 0.3s ease;
+}
+.modal.show {
+  opacity: 1;
+}
+.modal:not(.show) {
+  opacity: 0;
+}
+.modal-backdrop {
+  transition: opacity 0.3s ease;
+}
+.modal-backdrop.show {
+  opacity: 0.5;
+}
+.modal:not(.show) + .modal-backdrop {
+  opacity: 0;
+  display: none;
+}

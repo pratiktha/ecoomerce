@@ -36,6 +36,10 @@ export const routes: Routes = [
   path:'shop',
   component:ShopComponent
 },
+{ 
+  path: 'product/:id',  // Add :id parameter
+  component: ProductComponent 
+},
 {
   path:'comingsoon',
   component:ComingsoonComponent
@@ -44,10 +48,7 @@ export const routes: Routes = [
   path:'contactus',
   component:ContactusComponent
 },
-{
-  path:'product',
-  component:ProductComponent
-},
+
 {
 path:'cart',
 component:CartComponent
