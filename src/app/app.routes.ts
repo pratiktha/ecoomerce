@@ -20,6 +20,7 @@ import { TermsofuseComponent } from './pages/termsofuse/termsofuse.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { SearchresultComponent } from './pages/searchresult/searchresult.component';
 import { ProductaddComponent } from './components/admin_pages/productadd/productadd.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 export const routes: Routes = [
 
@@ -36,9 +37,9 @@ export const routes: Routes = [
   path:'shop',
   component:ShopComponent
 },
-{ 
+{
   path: 'product/:id',  // Add :id parameter
-  component: ProductComponent 
+  component: ProductComponent
 },
 {
   path:'comingsoon',
@@ -116,5 +117,9 @@ component:MyaccountaddressComponent
 },{
   path:'add-product',
   component:ProductaddComponent
+},
+{
+  path:'checkout',
+  component:CheckoutComponent
 }
 ];
