@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -33,7 +34,9 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private cartService: CartService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -97,24 +100,53 @@ export class ProductComponent implements OnInit {
 
   addToCart(): void {
     const productToAdd = {
-      ...this.product,
+      productId: this.product._id,
+      name: this.product.name,
+      price: this.product.price,
       selectedColor: this.selectedColor,
       selectedSize: this.selectedSize,
-      quantity: this.quantity
+      quantity: this.quantity,
+      image: this.selectedImage || this.product.image
     };
-    // Implement your cart service logic here
-    console.log('Added to cart:', productToAdd);
+  
+    this.http.post('http://localhost:3200/cart/add', productToAdd).subscribe({
+      next: (res) => {
+        console.log('Added to cart:', res);
+      },
+      error: (err) => {
+        console.error('Error adding to cart:', err);
+      }
+    });
   }
+  
+  
 
   addToWishlist(): void {
     // Implement your wishlist service logic here
     console.log('Added to wishlist:', this.product);
   }
-
   buyNow(): void {
-    // Implement your buy now logic here
-    this.addToCart();
-    // Then navigate to checkout
-    console.log('Proceeding to checkout');
+    console.log('hi')
+    const productToAdd = {
+      productId: this.product._id,
+      name: this.product.name,
+      price: this.product.price,
+      selectedColor: this.selectedColor,
+      selectedSize: this.selectedSize,
+      quantity: this.quantity,
+      image: this.selectedImage || this.product.image
+    };
+  
+    this.http.post('http://localhost:3200/cart/add', productToAdd).subscribe({
+      next: (res) => {
+        console.log('Added to cart:', res);
+        this.router.navigate(['/cart']); // 🔁 navigate after successful POST
+      },
+      error: (err) => {
+        console.error('Error adding to cart:', err);
+      }
+    });
   }
+  
+  
 }
