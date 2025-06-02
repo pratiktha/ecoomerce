@@ -34,6 +34,7 @@
               "./src/assets/css/animate.css",
               "./src/assets/css/styles.css",
               "node_modules/font-awesome/css/font-awesome.min.css"
+            
             ],
             "scripts": [
               "./src/assets/js/bootstrap.min.js",
@@ -46,7 +47,7 @@
               "./src/assets/js/wow.min.js",
               "./src/assets/js/multiple-modal.js",
               "./src/assets/js/main.js"
-
+        
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",

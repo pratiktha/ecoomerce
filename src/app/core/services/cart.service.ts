@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,21 +7,23 @@ import { Injectable } from '@angular/core';
 export class CartService {
   private cartItems: any[] = [];
 
-  constructor() {}
+  private baseUrl = 'http://localhost:3200/cart';
 
-  addToCart(item: any) {
-    this.cartItems.push(item);
+  constructor(private http: HttpClient) {}
+
+  getCartItemsFromAPI() {
+    return this.http.get<any[]>(`${this.baseUrl}`);
   }
 
-  getCartItems() {
-    return this.cartItems;
+  removeItemFromAPI(productId: string) {
+    return this.http.delete(`${this.baseUrl}/remove/${productId}`);
+  }
+
+  addToCart(item: any) {
+    return this.http.post(`${this.baseUrl}/add`, item);
   }
 
   clearCart() {
-    this.cartItems = [];
-  }
-
-  removeItem(index: number) {
-    this.cartItems.splice(index, 1);
+    return this.http.post(`${this.baseUrl}/clear`, {});
   }
 }

@@ -5,7 +5,7 @@
       <span>›</span>
       <span>{{product.category}}</span>
       <span>›</span>
-      <span>{{product.subcategory}}</span>
+      <!-- <span>{{product.subcategory}}</span> -->
     </div>
   
     <!-- Main Product Section -->
@@ -39,7 +39,7 @@
             <span>★★★★★</span>
             <a href="#reviews" class="rating-count">12,345 ratings</a>
           </div>
-          <div class="brand">Brand: <a href="#">{{product.brand || 'Generic'}}</a></div>
+          <!-- <div class="brand">Brand: <a href="#">{{product.brand || 'Generic'}}</a></div> -->
         </div>
         
         <hr class="divider">
@@ -107,7 +107,7 @@
         
         <!-- Action Buttons -->
         <div class="action-buttons">
-          <button class="add-to-cart" (click)="addToCart()">Add to Cart</button>
+          <button class="add-to-cart" (click)="addToCart()">Add to Carts</button>
 <button class="buy-now" (click)="buyNow()">Buy Now</button>
 
         </div>
@@ -137,3 +137,7 @@
       </div>
     </div>
   </div>
+  <div *ngIf="notificationMessage" class="toast-message">
+    {{ notificationMessage }}
+  </div>
+  

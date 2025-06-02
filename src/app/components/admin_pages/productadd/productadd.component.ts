@@ -39,11 +39,11 @@ export class ProductaddComponent {
   apiUrl = 'http://localhost:3200/addproducts'; 
   apiUrl1 = 'http://localhost:3200/productsdetails'; 
   products: Product[] = [];
-  isLoading = true;
   error: string | null = null;
   productForm!: FormGroup;
   categories = ['Electronics', 'Clothing', 'Home', 'Books', 'Toys', 'Other'];
   productId: string | null = null;
+  isLoading = true;
 errorMessage: any;
   
   

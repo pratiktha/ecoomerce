@@ -7,7 +7,7 @@ import { CartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-product',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
@@ -21,14 +21,14 @@ export class ProductComponent implements OnInit {
   selectedColor: string | null = null;
   selectedSize: string | null = null;
   quantity: number = 1;
-  
+
   // Mock data for variants (you can replace with actual data from your API)
   colorVariants = [
     { colorName: 'Red', colorCode: '#ff0000', isActive: true },
     { colorName: 'Blue', colorCode: '#0000ff', isActive: false },
     { colorName: 'Green', colorCode: '#00ff00', isActive: false }
   ];
-  
+
   sizeVariants = ['S', 'M', 'L', 'XL', 'XXL'];
 
 
@@ -37,7 +37,7 @@ export class ProductComponent implements OnInit {
     private http: HttpClient,
     private cartService: CartService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id');
@@ -69,7 +69,7 @@ export class ProductComponent implements OnInit {
       }
     });
   }
-   selectColor(variant: any): void {
+  selectColor(variant: any): void {
     this.selectedColor = variant.colorName;
     // Update active state for color variants
     this.product.colorVariants.forEach((v: any) => {
@@ -108,18 +108,26 @@ export class ProductComponent implements OnInit {
       quantity: this.quantity,
       image: this.selectedImage || this.product.image
     };
-  
+
     this.http.post('http://localhost:3200/cart/add', productToAdd).subscribe({
       next: (res) => {
         console.log('Added to cart:', res);
+        this.showNotification('Item added to cart!');
       },
       error: (err) => {
         console.error('Error adding to cart:', err);
       }
     });
   }
-  
-  
+
+  notificationMessage = '';
+  showNotification(message: string): void {
+    this.notificationMessage = message;
+    setTimeout(() => {
+      this.notificationMessage = '';
+    }, 5000); // hide after 5 seconds
+  }
+
 
   addToWishlist(): void {
     // Implement your wishlist service logic here
@@ -136,7 +144,7 @@ export class ProductComponent implements OnInit {
       quantity: this.quantity,
       image: this.selectedImage || this.product.image
     };
-  
+
     this.http.post('http://localhost:3200/cart/add', productToAdd).subscribe({
       next: (res) => {
         console.log('Added to cart:', res);
@@ -147,6 +155,6 @@ export class ProductComponent implements OnInit {
       }
     });
   }
-  
-  
+
+
 }
